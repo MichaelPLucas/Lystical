@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list_id: 1
+  title: MyString
+  description: MyText
+  image: MyText
+  price: 9.99
+  currency: 1
+  link: MyText
+  date_added: 2021-09-21 16:32:10
+
+two:
+  list_id: 1
+  title: MyString
+  description: MyText
+  image: MyText
+  price: 9.99
+  currency: 1
+  link: MyText
+  date_added: 2021-09-21 16:32:10
