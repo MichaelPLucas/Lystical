@@ -1,0 +1,32 @@
+<nav class="navbar navbar-dark px-5 py-3" style="background-color: #126B12">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <h2>Lystical</h2>
+    </a>
+    <ul class="navbar-nav d-flex flex-row justify-content-end">
+      <li class="nav-item px-3" >
+        <form style="margin-top: 12px">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline" type="submit"></button>
+        </form>
+      </li>
+      <li class="nav-item px-1">
+        <!-- Conditional rendering for logged in user vs. guest -->
+        <!-- STILL UNDER CONSTRUCTION -->
+        <%
+          if id = session[:current_user_id]
+            user = get_user id 
+        %>
+          <a class="nav-link" href=<%= "/users/" + id.to_s %>>
+            <h4 style="margin-top: 10px"><%= user[:username] %></h4>
+            <img src=<%= user[:avatar] %>/>
+          </a>
+        <% else %>
+          <a class="nav-link" href="/login">
+            <h4 style="margin-top: 10px">Log In / Sign Up</h4>
+          </a>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
