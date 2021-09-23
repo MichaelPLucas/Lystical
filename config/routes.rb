@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "application#index"
+  get "login", to: "application#login"
   resources :comments
   resources :items
   resources :lists

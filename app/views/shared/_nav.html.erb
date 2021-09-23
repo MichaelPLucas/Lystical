@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark px-5 py-3" style="background-color: #126B12">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      <h2>Lystical</h2>
+      <h1>Lystical</h1>
     </a>
     <ul class="navbar-nav d-flex flex-row justify-content-end">
       <li class="nav-item px-3" >
@@ -13,10 +13,7 @@
       <li class="nav-item px-1">
         <!-- Conditional rendering for logged in user vs. guest -->
         <!-- STILL UNDER CONSTRUCTION -->
-        <%
-          if id = session[:current_user_id]
-            user = get_user id 
-        %>
+        <% if id = session[:current_user_id] %>
           <a class="nav-link" href=<%= "/users/" + id.to_s %>>
             <h4 style="margin-top: 10px"><%= user[:username] %></h4>
             <img src=<%= user[:avatar] %>/>
