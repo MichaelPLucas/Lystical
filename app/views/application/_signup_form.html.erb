@@ -1,0 +1,50 @@
+<%= form_with(model: @user, url: "/users", method: "post", local: false, id: "signup", format: "json") do |form| %>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="signup_username" class="col-4 col-form-label">Username</label>
+    <div class="col-6">
+      <%= form.text_field :username, class:"form-control", id:"signup_username" %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="signup_email" class="col-4 col-form-label">Email</label>
+    <div class="col-6">
+      <%= form.email_field :email, class:"form-control", id:"signup_email" %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="signup_password" class="col-4 col-form-label">Password</label>
+    <div class="col-6">
+      <%= form.password_field :password, class:"form-control", id:"signup_password" %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="signup_password_confirmation" class="col-4 col-form-label">Confirm password</label>
+    <div class="col-6">
+      <%= form.password_field :password_confirmation, class:"form-control", id:"signup_password_confirmation" %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <%= form.submit %>
+
+  <script>
+    window.addEventListener('load', () => {
+      const signup = document.querySelector('#signup');
+      signup.addEventListener('ajax:error', () => {
+        const data = event.detail[0];
+        Object.entries(data).forEach(error => {
+          console.log(error);
+          let element = document.querySelector('#signup_' + error[0]);
+          element.classList.add('was-validated');
+        })
+      })
+    })
+  </script>
+<% end %>
