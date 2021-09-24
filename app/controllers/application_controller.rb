@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # GET /
   def index
-    #@user = session[:current_user_id]
+    @user = session[:current_user]
   end
 
   # GET /login

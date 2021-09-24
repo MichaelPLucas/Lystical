@@ -12,24 +12,7 @@
           </div>
           <div class="col-6 text-center py-4">
             <h3>Log In</h3>
-            <form>
-              <div class="row">
-                <div class="col-1"></div>
-                <label for="loginUsername" class="col-4 col-form-label">Username</label>
-                <div class="col-6">
-                  <input id="loginUsername" type="text" class="form-control" />
-                </div>
-                <div class="col-1"></div>
-              </div>
-              <div class="row">
-                <div class="col-1"></div>
-                <label for="loginPassword" class="col-4 col-form-label">Password</label>
-                <div class="col-6">
-                  <input id="loginPassword" type="password" class="form-control" />
-                </div>
-                <div class="col-1"></div>
-              </div>
-            </form>
+            <%= render "login_form" %>
           </div>
         </div>
       </div>

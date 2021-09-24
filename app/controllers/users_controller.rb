@@ -56,6 +56,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/login or /users/login.json
+  def login
+    @user = User.find_by(email: user_params["email"])
+    respond_to do |format|
+      if @user and @user["password"] === user_params["password"]
+        session[:current_user] = @user
+        format.html { redirect_to '/' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.json { render json: { "error": "Invalid email or password" }, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -64,6 +78,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :passwordConfirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end
