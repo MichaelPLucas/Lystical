@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_233326) do
     t.integer "list_id"
     t.integer "user_id"
     t.text "text"
-    t.datetime "date_posted"
-    t.datetime "date_updated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,7 +28,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_233326) do
     t.decimal "price"
     t.integer "currency"
     t.text "link"
-    t.datetime "date_added"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,8 +37,6 @@ ActiveRecord::Schema.define(version: 2021_09_21_233326) do
     t.string "title"
     t.text "description"
     t.boolean "visibility"
-    t.datetime "date_created"
-    t.datetime "date_updated"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

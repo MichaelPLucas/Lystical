@@ -29,6 +29,23 @@
   border-radius: 5px;
 }
 
-a:visited {
+a:visited.btn {
+  color: #000
+}
+
+a:hover.btn {
+  background-color: #FFF;
+  color: #000
+}
+
+a:visited.btn-success, a:visited.btn-danger {
+  color: #FFF
+}
+
+a:visited.btn-outline-danger {
+  color: #DC3545
+}
+
+a:hover.btn-outline-danger {
   color: #FFF
 }

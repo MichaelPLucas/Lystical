@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   delete "users/:id", to: "users#destroy"
   post "users", to: "users#create"
   post "lists", to: "lists#create"
+  get "lists/:id", to: "lists#show"
+  delete "lists/:id", to: "lists#destroy"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

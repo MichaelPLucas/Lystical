@@ -21,13 +21,11 @@ class ListsController < ApplicationController
 
   # POST /lists or /lists.json
   def create
-    date = DateTime.now
-    list_params["date_created"] = date
-    list_params["date_updated"] = date
     @list = List.new(list_params)
 
     respond_to do |format|
       if @list.save
+        format.js { "List successfully created" }
         format.json { render :show, status: :created, location: @lists }
       else
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -52,7 +50,6 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
       format.json { head :no_content }
     end
   end
