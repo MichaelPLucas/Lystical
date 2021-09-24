@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
     if @user.id != session[:current_user]["id"]
       raise ActionController::RoutingError.new("Not Found")
+    else
+      @lists = List.where(user_id: @user.id)
     end
   end
 

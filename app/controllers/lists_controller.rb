@@ -21,14 +21,15 @@ class ListsController < ApplicationController
 
   # POST /lists or /lists.json
   def create
+    date = DateTime.now
+    list_params["date_created"] = date
+    list_params["date_updated"] = date
     @list = List.new(list_params)
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: "List was successfully created." }
-        format.json { render :show, status: :created, location: @list }
+        format.json { render :show, status: :created, location: @lists }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end
@@ -64,6 +65,6 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:user_id, :title, :description, :visibility, :date_created, :date_updated)
+      params.require(:list).permit(:user_id, :title, :description, :visibility)
     end
 end

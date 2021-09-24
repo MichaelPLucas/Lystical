@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_09_21_233326) do
     t.integer "user_id"
     t.string "title"
     t.text "description"
-    t.integer "visibility"
+    t.boolean "visibility"
     t.datetime "date_created"
     t.datetime "date_updated"
     t.datetime "created_at", precision: 6, null: false
