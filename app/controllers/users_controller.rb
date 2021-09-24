@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    if @user.id != session[:current_user]["id"]
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 
   # GET /users/new
@@ -49,9 +52,10 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    session[:current_user] = nil
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to '/', notice: "User was successfully deleted." }
       format.json { head :no_content }
     end
   end

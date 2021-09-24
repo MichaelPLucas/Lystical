@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
       @user = User.new
     end
   end
+
+  # GET /logout
+  def logout
+    session[:current_user] = nil
+    redirect_to '/'
+  end
 end
