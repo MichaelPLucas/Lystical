@@ -8,6 +8,12 @@ class ListsController < ApplicationController
 
   # GET /lists/1 or /lists/1.json
   def show
+    @user = session[:current_user]
+    if @list.visibility or @user and @list.user_id == @user["id"]
+      @items = Item.where(list_id: @list.id)
+    else
+      raise ActionController::RoutingError.new("Not found")
+    end
   end
 
   # GET /lists/new

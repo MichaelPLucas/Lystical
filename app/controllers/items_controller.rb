@@ -25,10 +25,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
+        format.html { redirect_to "/lists/" + @item.list_id.to_s }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -64,6 +63,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:list_id, :title, :description, :image, :price, :currency, :link, :date_added)
+      params.require(:item).permit(:list_id, :title, :description, :image, :price, :currency, :link)
     end
 end

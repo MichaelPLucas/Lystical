@@ -11,18 +11,17 @@
         </form>
       </li>
       <li class="nav-item px-1">
-        <!-- Conditional rendering for logged in user vs. guest -->
         <% if @user %>
           <a class="nav-link" href=<%= "/users/" + @user["id"].to_s %>>
             <h4 style="margin-top: 10px; float: left"><%= @user["username"] %></h4>
             <img class="rounded-circle" style="height: 50px; width: 50px; margin-left: 10px" src=<%= @user["avatar"] or "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" %> />
-          </a>
-        <% else %>
-          <a class="nav-link" href="/login">
-            <h4 style="margin-top: 10px">Log In / Sign Up</h4>
-          </a>
-        <% end %>
-      </li>
-    </ul>
-  </div>
+        </a>
+      <% else %>
+        <a class="nav-link" href="/login">
+          <h4 style="margin-top: 10px">Log In / Sign Up</h4>
+        </a>
+      <% end %>
+    </li>
+  </ul>
+</div>
 </nav>

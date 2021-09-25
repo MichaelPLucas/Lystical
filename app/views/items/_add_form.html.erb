@@ -1,0 +1,63 @@
+<div class="row py-4 border-bottom">
+  <%= form_with model: @item, url:"/items", scope: :item do |form| %>
+    <%= form.hidden_field :list_id, value:locals[:list_id] %>
+    <div class="row">
+      <div class="col-11">
+        <h4>New Item:</h4>
+      </div>
+      <div class="col-1 text-end">
+        <%= form.submit "+", class:"btn btn-outline-success" %>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-4">
+        <div class="row">
+          <label for="item_title" class="col-2 col-form-label">Title:</label>
+          <div class="col-10">
+            <%= form.text_field :title, class:"form-control", id:"item_title" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <label for="item_price" class="col-2 col-form-label">Price:</label>
+          <div class="col-10">
+            <%= form.text_field :price, class:"form-control", id:"item_price" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <label for="item_currency" class="col-2 col-form-label">Currency:</label>
+          <div class="col-10">
+            <%= form.text_field :currency, class:"form-control", id:"item_currency" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <label for="item_description" class="col-2 col-form-label">Description:</label>
+      <div class="col-10">
+        <%= form.text_area :description, class:"form-control", id:"item_description" %>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-6">
+        <div class="row">
+          <label for="item_link" class="col-2 col-form-label">Link:</label>
+          <div class="col-10">
+            <%= form.text_field :link, class:"form-control", id:"item_link" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <label for="item_image" class="col-2 col-form-label">Image:</label>
+          <div class="col-10">
+            <%= form.text_field :image, class:"form-control", id:"item_image" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

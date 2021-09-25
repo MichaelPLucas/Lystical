@@ -1,18 +1,18 @@
 <%= form_with(model: @user, url:"/users/login", method:"post", local: false, id:"login", format:"json") do |form| %>
   <div class="row">
     <div class="col-1"></div>
-      <label for="login_email" class="col-4 col-form-label">Email</label>
-      <div class="col-6">
-        <%= form.email_field :email, class:"form-control", id:"login_email" %>
-      </div>
+    <label for="login_email" class="col-4 col-form-label">Email</label>
+    <div class="col-6">
+      <%= form.email_field :email, class:"form-control", id:"login_email" %>
+    </div>
     <div class="col-1"></div>
   </div>
   <div class="row">
     <div class="col-1"></div>
-      <label for="loginPassword" class="col-4 col-form-label">Password</label>
-      <div class="col-6">
-        <%= form.password_field :password, class:"form-control", id:"login_password" %>
-      </div>
+    <label for="loginPassword" class="col-4 col-form-label">Password</label>
+    <div class="col-6">
+      <%= form.password_field :password, class:"form-control", id:"login_password" %>
+    </div>
     <div class="col-1"></div>
   </div>
   <%= form.submit "Log In", class:"btn" %>
