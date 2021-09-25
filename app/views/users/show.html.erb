@@ -49,13 +49,13 @@
                 <% end %>
               </div>
               <div class="col-1">
-                <%= link_to "X", "/lists/" + list.id.to_s, method: "delete", remote: true, class:"btn btn-outline-danger" %>
+                <%= link_to "X", "/lists/" + list.id.to_s, method: "delete", class:"btn btn-outline-danger" %>
               </div>
             </div>
-            <div class="row">
+            <div class="row px-3">
               <h5><%= list.description %></h5>
             </div>
-            <div class="row border-bottom py-2 px-2">
+            <div class="row border-bottom py-3 px-3">
               <div class="col-5">
                 Created: <%= list.created_at.strftime("%B %-d, %Y %H:%m") %>
               </div>

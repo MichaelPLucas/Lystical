@@ -1,9 +1,9 @@
 <div class="row py-4 border-bottom">
-  <%= form_with model: @item, url:"/items", scope: :item do |form| %>
+  <%= form_with model: @item, url:@item ? "/items/" + @item.id.to_s : "/items", scope: :item, method: locals[:method] do |form| %>
     <%= form.hidden_field :list_id, value:locals[:list_id] %>
     <div class="row">
       <div class="col-11">
-        <h4>New Item:</h4>
+        <h4><%= locals[:title] %></h4>
       </div>
       <div class="col-1 text-end">
         <%= form.submit "+", class:"btn btn-outline-success" %>

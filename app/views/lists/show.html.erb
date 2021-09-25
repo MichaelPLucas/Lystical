@@ -3,19 +3,31 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-2" style="background-color: #77DD77"></div>
-    <div class="col-8 min-vh-100" style="padding-top: 100px">
+    <div class="col-8 px-5 min-vh-100" style="padding-top: 100px">
       <div class="row py-4 border-bottom">
-        <h1><%= @list.title %></h1>
+        <div class="row">
+        <div class="col-11">
+          <h1><%= @list.title %></h1>
+        </div>
+        <div class="col-1 text-end">
+          <%= link_to "e", "/lists/" + @list.id.to_s + "/edit", class:"btn btn-outline-dark" %>
+        </div>
+        </div>
+        <div class="row">
+          <h4><%= @list.description %></h4>
+        </div>
       </div>
       <% if session[:current_user]["id"] == @list.user_id %>
-        <%= render "items/add_form", locals: { list_id: @list.id } %>
+        <%= render "items/form", locals: { list_id: @list.id, method: "post", title: "New Item:" } %>
       <% end %>
       <% @items.each do |item| %>
         <div class="row py-4 border-bottom">
           <div class="col-11">
             <div class="row">
               <div class="col-2">
-                <img class="rounded-circle w-100" src=<%= item.image and item.image != "" ? item.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" %> />
+                <div class="ratio ratio-1x1">
+                  <img class="rounded-circle" src=<%= item.image and item.image != "" ? item.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" %> />
+                </div>
               </div>
               <div class="col-6 px-4">
                 <div class="row">
@@ -46,7 +58,7 @@
             <div class="row">
               <div class="col-3"></div>
               <div class="col-6">
-                <button class="btn btn-outline-danger">x</button>
+                <%= link_to "x", "/items/" + item.id.to_s, method:"delete", class:"btn btn-outline-danger" %>
               </div>
               <div class="col-3"></div>
             </div>
@@ -54,7 +66,7 @@
             <div class="row">
               <div class="col-3"></div>
               <div class="col-6">
-                <button class="btn btn-outline-dark">e</button>
+                <%= link_to "e", "/items/" + item.id.to_s + "/edit", class:"btn btn-outline-dark" %>
               </div>
               <div class="col-3"></div>
             </div>

@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   get "lists/:id", to: "lists#show"
   delete "lists/:id", to: "lists#destroy"
   post "items", to: "items#create"
+  delete "items/:id", to: "items#destroy"
+  get "items/:id/edit", to: "items#edit"
+  put "items/:id", to: "items#update"
+  get "lists/:id/edit", to: "lists#edit"
+  put "lists/:id", to: "lists#update"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

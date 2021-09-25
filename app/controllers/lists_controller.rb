@@ -23,6 +23,9 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
+    unless session[:current_user] and session[:current_user]["id"] == @list.user_id
+      raise ActionController::RoutingError.new("Not found")
+    end
   end
 
   # POST /lists or /lists.json
@@ -31,7 +34,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.js { "List successfully created" }
+        format.html { redirect_to "/lists/" + @list.id.to_s + "/edit" }
         format.json { render :show, status: :created, location: @lists }
       else
         format.json { render json: @list.errors, status: :unprocessable_entity }
@@ -43,7 +46,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list, notice: "List was successfully updated." }
+        format.html { redirect_to "/lists/" + @list.id.to_s, notice: "List was successfully updated." }
         format.json { render :show, status: :ok, location: @list }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,8 +57,10 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1 or /lists/1.json
   def destroy
+    user_id = @list.user_id
     @list.destroy
     respond_to do |format|
+      format.html { redirect_to "/users/" + user_id.to_s, notice: "List was successfully deleted." }
       format.json { head :no_content }
     end
   end

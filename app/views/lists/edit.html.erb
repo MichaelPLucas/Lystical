@@ -1,0 +1,43 @@
+<%= render "shared/nav" %>
+<p id="notice" style="position: fixed"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2" style="background-color: #77DD77"></div>
+    <div class="col-8 min-vh-100" style="padding-top: 100px">
+      <%= form_with(model: @list, url:"/lists/" + @list.id.to_s, method:"put", scope: :list) do |form| %>
+        <div class="row px-5 py-5">
+          <div class="col-6">
+            <div class="row">
+              <label for="title" class="col-2 col-form-label">Title:</label>
+              <div class="col-10">
+                <%= form.text_field :title, class:"form-control", id:"title" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-2">
+            <div class="row">
+              <label for="visibility" class="col-10 col-form-label text-end">Public:</label>
+              <div class="col-2">
+                <%= form.check_box :visibility, id:"visibility" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row px-5">
+          <label for="description" class="col-2 col-form-label">Description:</label>
+          <div class="col-10">
+            <%= form.text_area :description, class:"form-control", id:"description" %>
+          </div>
+        </div>
+        <div class="row px-5 py-5">
+          <div class="col-11"></div>
+          <div class="col-1">
+            <%= form.submit "Save", class:"btn btn-outline-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-2" style="background-color: #77DD77"></div>
+  </div>
+</div>
