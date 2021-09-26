@@ -8,7 +8,9 @@
         <div class="col-4 px-4">
           <div class="row">
             <div class="col-6">
-              <img class="rounded-circle" style="width: 100%" src=<%= @user["avatar"] or "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" %> />
+              <div class="ratio ratio-1x1">
+                <img class="rounded-circle" style="width: 100%" src=<%= @user["avatar"] or "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" %> />
+              </div>
             </div>
             <div class="col-6">
               <br />

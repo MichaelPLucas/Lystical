@@ -1,0 +1,11 @@
+<%= render "shared/nav" %>
+<p id="notice" style="position: fixed"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2" style="background-color: #77DD77"></div>
+    <div class="col-8 px-5 min-vh-100" style="padding-top: 100px">
+      <%= render "form", locals: { list_id: @comment.list_id, method: "put", title: "Edit comment", submit: "Save" } %>
+    </div>
+    <div class="col-2" style="background-color: #77DD77"></div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row py-2 border-bottom">
+  <h4><%= locals[:title] %></h4>
+  <%= form_with model: @comment, url: @comment ? "/comments/" + @comment.id.to_s : "/comments", method: locals[:method], scope: :comment do |form| %>
+    <%= form.hidden_field :list_id, value: locals[:list_id] %>
+    <%= form.hidden_field :user_id, value: @user["id"] %>
+    <div class="row py-2">
+      <label for="text" class="col-1 col-form-label">Text:</label>
+      <div class="col-11">
+        <%= form.text_area :text, class: "form-control", id: "text" %>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-11"></div>
+      <div class="col-1">
+        <%= form.submit locals[:submit], class:"btn btn-outline-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

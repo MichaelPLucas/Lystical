@@ -1,0 +1,26 @@
+<% user = User.find(locals[:comment].user_id) %>
+<div class="row py-3 border-top">
+  <div class="col-11">
+    <img class="rounded-circle" style="width: 50px; height: 50px; float: left" src=<%= user.avatar or "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" %> />
+    <h3 class="my-auto mx-3" style="float: left"><%= user.username %></h3>
+  </div>
+  <div class="col-1">
+    <% if user.id == @user["id"] %>
+      <%= link_to "/comments/" + locals[:comment].id.to_s + "/edit", class: "btn btn-outline-dark" do %>
+        <%= fa_icon "pencil" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row py-3">
+  <h5><%= locals[:comment].text %></h5>
+</div>
+<div class="row py-3">
+  <div class="col-6"></div>
+  <div class="col-3">
+    Edited: <%= locals[:comment].updated_at.strftime("%B %-d, %Y %H:%m") %>
+  </div>
+  <div class="col-3">
+    Added: <%= locals[:comment].created_at.strftime("%B %-d, %Y %H:%m") %>
+  </div>
+</div>

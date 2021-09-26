@@ -19,66 +19,21 @@
           <h4><%= @list.description %></h4>
         </div>
       </div>
-      <% if session[:current_user]["id"] == @list.user_id %>
+      <% if @user and @user["id"] == @list.user_id %>
         <%= render "items/form", locals: { list_id: @list.id, method: "post", title: "New Item:" } %>
       <% end %>
       <% @items.each do |item| %>
-        <div class="row py-4 border-bottom">
-          <div class="col-11">
-            <div class="row">
-              <div class="col-2">
-                <div class="ratio ratio-1x1">
-                  <img class="rounded-circle" src=<%= item.image and item.image != "" ? item.image : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" %> />
-                </div>
-              </div>
-              <div class="col-6 px-4">
-                <div class="row">
-                  <h3><%= item.title %></h3>
-                </div>
-                <div class="row px-3">
-                  <%= item.description %>
-                </div>
-              </div>
-              <div class="col-4 my-auto">
-                <div class="row text-end">
-                  <h5><%= format("%.2f", item.price) %> <%= item.currency %></h5>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6"></div>
-              <div class="col-3 text-end">
-                Added: <%= item.created_at.strftime("%B %-d, %Y %H:%m") %>
-              </div>
-              <div class="col-3 text-end">
-                Edited: <%= item.updated_at.strftime("%B %-d, %Y %H:%m") %>
-              </div>
-            </div>
-          </div>
-          <div class="col-1">
-            <br/>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-6">
-                <%= link_to "/items/" + item.id.to_s, method:"delete", class:"btn btn-outline-danger" do %>
-                  <%= fa_icon "times" %>
-                <% end %>
-              </div>
-              <div class="col-3"></div>
-            </div>
-            <br/>
-            <div class="row">
-              <div class="col-3"></div>
-              <div class="col-6">
-                <%= link_to "/items/" + item.id.to_s + "/edit", class:"btn btn-outline-dark" do %>
-                  <%= fa_icon "pencil" %>
-                <% end %>
-              </div>
-              <div class="col-3"></div>
-            </div>
-          </div>
-        </div>
+        <%= render "items/row", locals: { item: item } %>
       <% end %>
+      <div class="row py-4">
+        <h3>Comments:</h3>
+        <% if @user %>
+          <%= render "comments/form", locals: { list_id: @list.id, method: "post", title:"New Comment:", submit: "Send" } %>
+        <% end %>
+        <% @comments.each do |comment| %>
+          <%= render "comments/row", locals: { comment: comment } %>
+        <% end %>
+      </div>
     </div>
     <div class="col-2" style="background-color: #77DD77"></div>
   </div>

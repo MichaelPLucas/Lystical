@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   put "items/:id", to: "items#update"
   get "lists/:id/edit", to: "lists#edit"
   put "lists/:id", to: "lists#update"
+  post "comments", to: "comments#create"
+  put "comments/:id", to: "comments#update"
+  get "comments/:id/edit", to: "comments#edit"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
