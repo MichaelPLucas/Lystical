@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Use bootstrap as the css library of choice
 gem 'bootstrap', '~> 5.1.0'
 
+# Use font-awesome for icons
+gem 'font-awesome-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

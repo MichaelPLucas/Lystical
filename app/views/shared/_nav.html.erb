@@ -8,7 +8,7 @@
         <%= form_with(model: @list, url:"/lists/search/", method: "get", scope: :list) do |form| %>
           <div class="input-group mb-3" style="margin-top: 12px">
             <%= form.text_field :search, class:"form-control", placeholder:"Search" %>
-            <%= form.submit "s", class:"btn btn-light" %>
+            <%= form.button fa_icon "search", class:"btn btn-light" %>
           </div>
         <% end %>
       </li>

@@ -6,7 +6,9 @@
         <h4><%= locals[:title] %></h4>
       </div>
       <div class="col-1 text-end">
-        <%= form.submit "+", class:"btn btn-outline-success" %>
+        <%= form.button class:"btn btn-outline-success" do %>
+          <%= fa_icon "plus" %>
+        <% end %>
       </div>
     </div>
     <div class="row py-2">

@@ -37,7 +37,9 @@
                 <%= form.hidden_field :title, value: "New List" %>
                 <%= form.hidden_field :description, value: "" %>
                 <%= form.hidden_field :visibility, value: "false" %>
-                <%= form.submit "+", class:"btn btn-outline-success" %>
+                <%= form.button class:"btn btn-outline-success" do %>
+                  <%= fa_icon "plus" %>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -49,7 +51,9 @@
                 <% end %>
               </div>
               <div class="col-1">
-                <%= link_to "X", "/lists/" + list.id.to_s, method: "delete", class:"btn btn-outline-danger" %>
+                <%= link_to "/lists/" + list.id.to_s, method: "delete", class:"btn btn-outline-danger" do %>
+                  <%= fa_icon "times" %>
+                <% end %>
               </div>
             </div>
             <div class="row px-3">

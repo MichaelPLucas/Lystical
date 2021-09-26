@@ -1,5 +1,5 @@
 <%= form_with(model: @user, url: "/users", method: "post", local: false, id: "signup", format: "json") do |form| %>
-  <div class="row">
+  <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_username" class="col-4 col-form-label">Username</label>
     <div class="col-6">
@@ -7,7 +7,7 @@
     </div>
     <div class="col-1"></div>
   </div>
-  <div class="row">
+  <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_email" class="col-4 col-form-label">Email</label>
     <div class="col-6">
@@ -15,7 +15,7 @@
     </div>
     <div class="col-1"></div>
   </div>
-  <div class="row">
+  <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_password" class="col-4 col-form-label">Password</label>
     <div class="col-6">
@@ -23,7 +23,7 @@
     </div>
     <div class="col-1"></div>
   </div>
-  <div class="row">
+  <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_password_confirmation" class="col-4 col-form-label">Confirm password</label>
     <div class="col-6">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-1"></div>
   </div>
-  <%= form.submit "Sign Up", class:"btn" %>
+  <%= form.submit "Sign Up", class:"btn btn-outline-success my-3" %>
   <script>
     window.addEventListener('load', () => {
       const signup = document.querySelector('#signup');
