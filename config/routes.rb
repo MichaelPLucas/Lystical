@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "users/:id", to: "users#destroy"
   post "users", to: "users#create"
   post "lists", to: "lists#create"
+  get "lists/search", to: "lists#search"
   get "lists/:id", to: "lists#show"
   delete "lists/:id", to: "lists#destroy"
   post "items", to: "items#create"

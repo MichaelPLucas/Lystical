@@ -1,0 +1,36 @@
+<%= render "shared/nav" %>
+<p id="notice" style="position: fixed"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2" style="background-color: #77DD77"></div>
+    <div class="col-8 min-vh-100 px-5" style="padding-top: 100px">
+      <div class="row py-4">
+        <h1>Search Results:</h1>
+      </div>
+      <% @lists.each do |list| %>
+        <div class="row border-top py-2">
+              <div class="col-11">
+                <%= link_to "/lists/" + list.id.to_s, class:"btn" do %>
+                  <h3><%= list.title %></h3>
+                <% end %>
+              </div>
+              <div class="col-1"></div>
+            </div>
+            <div class="row px-3">
+              <h5><%= list.description %></h5>
+            </div>
+            <div class="row border-bottom py-3 px-3">
+              <div class="col-5">
+                Created: <%= list.created_at.strftime("%B %-d, %Y %H:%m") %>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-5">
+                Updated: <%= list.updated_at.strftime("%B %-d, %Y %H:%m") %>
+              </div>
+            </div>
+      <% end %>
+    </div>
+    <div class="col-2" style="background-color: #77DD77">
+    </div>
+  </div>
+</div>

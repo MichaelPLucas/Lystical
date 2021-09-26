@@ -28,6 +28,15 @@ class ListsController < ApplicationController
     end
   end
 
+  # GET /lists/search/:query
+  def search
+    @user = session[:current_user]
+    @lists = List.where(['title LIKE "%%%s%%" AND (visibility = true OR %s = %s)',
+                          list_params[:search].chars.join("%"),
+                          @user ? "user_id" : "visibility",
+                          @user ? @user["id"] : "true"])
+  end
+
   # POST /lists or /lists.json
   def create
     @list = List.new(list_params)
@@ -73,6 +82,6 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:user_id, :title, :description, :visibility)
+      params.require(:list).permit(:user_id, :title, :description, :visibility, :search)
     end
 end

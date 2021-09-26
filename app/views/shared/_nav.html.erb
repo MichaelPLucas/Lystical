@@ -4,11 +4,13 @@
       <h1>Lystical</h1>
     </a>
     <ul class="navbar-nav d-flex flex-row justify-content-end">
-      <li class="nav-item px-3" >
-        <form style="margin-top: 12px">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline" type="submit"></button>
-        </form>
+      <li class="nav-item px-3">
+        <%= form_with(model: @list, url:"/lists/search/", method: "get", scope: :list) do |form| %>
+          <div class="input-group mb-3" style="margin-top: 12px">
+            <%= form.text_field :search, class:"form-control", placeholder:"Search" %>
+            <%= form.submit "s", class:"btn btn-light" %>
+          </div>
+        <% end %>
       </li>
       <li class="nav-item px-1">
         <% if @user %>
