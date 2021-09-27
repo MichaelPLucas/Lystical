@@ -1,12 +1,13 @@
 <div class="row py-2 border-bottom">
   <h4><%= locals[:title] %></h4>
-  <%= form_with model: @comment, url: @comment ? "/comments/" + @comment.id.to_s : "/comments", method: locals[:method], scope: :comment do |form| %>
+  <%= form_with model: @comment, url: @comment ? "/comments/" + @comment.id.to_s : "/comments", method: locals[:method], scope: :comment, id: "comments", local: false do |form| %>
     <%= form.hidden_field :list_id, value: locals[:list_id] %>
     <%= form.hidden_field :user_id, value: @user["id"] %>
     <div class="row py-2">
       <label for="text" class="col-1 col-form-label">Text:</label>
-      <div class="col-11">
-        <%= form.text_area :text, class: "form-control", id: "text" %>
+      <div class="col-11 position-relative">
+        <%= form.text_area :text, class: "form-control", id: "comment_text" %>
+        <div class="invalid-tooltip" id="comment_text_feedback"></div>
       </div>
     </div>
     <div class="row py-2">
@@ -17,3 +18,14 @@
     </div>
   <% end %>
 </div>
+<script>
+    window.addEventListener('turbolink:load', () => {
+      const comments = document.querySelector('#comments');
+      comments.addEventListener('ajax:error', () => {
+          let element = document.querySelector('#comment_text');
+          element.classList.add('is-invalid');
+          element = document.querySelector('#comment_text_feedback');
+          element.innerHTML = 'Can\'t be blank';
+      })
+    })
+  </script>

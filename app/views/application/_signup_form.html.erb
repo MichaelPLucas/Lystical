@@ -37,7 +37,7 @@
   </div>
   <%= form.submit "Sign Up", class:"btn btn-outline-success my-3" %>
   <script>
-    window.addEventListener('load', () => {
+    window.addEventListener('turbolink:load', () => {
       const signup = document.querySelector('#signup');
       signup.addEventListener('ajax:error', () => {
         const fields = ['username', 'email', 'password', 'password_confirmation']
