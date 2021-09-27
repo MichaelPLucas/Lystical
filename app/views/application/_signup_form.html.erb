@@ -47,7 +47,7 @@
           element = document.querySelector('#signup_' + field + '_feedback');
           element.innerHTML = '';
         })
-
+    
         const data = event.detail[0];
         Object.entries(data).forEach(error => {
           let element = document.querySelector('#signup_' + error[0]);

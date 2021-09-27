@@ -66,26 +66,26 @@
   <% end %>
 </div>
 <script>
-    let ready_items = function() {
-      const items = document.querySelector('#items');
-      items.addEventListener('ajax:error', () => {
-        const fields = ['title', 'link']
-        fields.forEach(field => {
-          let element = document.querySelector('#item_' + field);
-          element.classList.remove('is-invalid')
-          element = document.querySelector('#item_' + field + '_feedback');
-          element.innerHTML = '';
-        })
-
-        const data = event.detail[0];
-        Object.entries(data).forEach(error => {
-          let element = document.querySelector('#item_' + error[0]);
-          element.classList.add('is-invalid');
-          element = document.querySelector('#item_' + error[0] + '_feedback');
-          element.innerHTML = error[1][0].charAt(0).toUpperCase() + error[1][0].slice(1);
-        })
+  let ready_items = function() {
+    const items = document.querySelector('#items');
+    items.addEventListener('ajax:error', () => {
+      const fields = ['title', 'link']
+      fields.forEach(field => {
+        let element = document.querySelector('#item_' + field);
+        element.classList.remove('is-invalid')
+        element = document.querySelector('#item_' + field + '_feedback');
+        element.innerHTML = '';
       })
-    };
-    window.addEventListener('load', ready_items);
-    window.addEventListener('turbolinks:load', ready_items);
-  </script>
+  
+      const data = event.detail[0];
+      Object.entries(data).forEach(error => {
+        let element = document.querySelector('#item_' + error[0]);
+        element.classList.add('is-invalid');
+        element = document.querySelector('#item_' + error[0] + '_feedback');
+        element.innerHTML = error[1][0].charAt(0).toUpperCase() + error[1][0].slice(1);
+      })
+    })
+  };
+  window.addEventListener('load', ready_items);
+  window.addEventListener('turbolinks:load', ready_items);
+</script>

@@ -19,15 +19,15 @@
   <% end %>
 </div>
 <script>
-    let ready_comments = function() {
-      const comments = document.querySelector('#comments');
-      comments.addEventListener('ajax:error', () => {
-          let element = document.querySelector('#comment_text');
-          element.classList.add('is-invalid');
-          element = document.querySelector('#comment_text_feedback');
-          element.innerHTML = 'Can\'t be blank';
-      })
-    };
-    window.addEventListener('load', ready_comments);
-    window.addEventListener('turbolinks:load', ready_comments);
-  </script>
+  let ready_comments = function() {
+    const comments = document.querySelector('#comments');
+    comments.addEventListener('ajax:error', () => {
+        let element = document.querySelector('#comment_text');
+        element.classList.add('is-invalid');
+        element = document.querySelector('#comment_text_feedback');
+        element.innerHTML = 'Can\'t be blank';
+    })
+  };
+  window.addEventListener('load', ready_comments);
+  window.addEventListener('turbolinks:load', ready_comments);
+</script>

@@ -1,48 +1,48 @@
 <%= form_with(model: @list, url:"/lists/" + @list.id.to_s, method:"put", scope: :list, id: "list", local: false) do |form| %>
-        <div class="row px-5 py-5">
-          <div class="col-6">
-            <div class="row">
-              <label for="title" class="col-2 col-form-label">Title:</label>
-              <div class="col-10 position-relative">
-                <%= form.text_field :title, class:"form-control", id:"list_title" %>
-                <div class="invalid-tooltip" id="list_title_feedback"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3"></div>
-          <div class="col-3">
-            <div class="row">
-              <label for="visibility" class="col-6 col-form-label text-end">Public:</label>
-              <div class="col-6 my-auto">
-                <%= form.check_box :visibility, class:"form-check-input", id:"list_visibility" %>
-              </div>
-            </div>
-          </div>
+  <div class="row px-5 py-5">
+    <div class="col-6">
+      <div class="row">
+        <label for="title" class="col-2 col-form-label">Title:</label>
+        <div class="col-10 position-relative">
+          <%= form.text_field :title, class:"form-control", id:"list_title" %>
+          <div class="invalid-tooltip" id="list_title_feedback"></div>
         </div>
-        <div class="row px-5">
-          <label for="description" class="col-2 col-form-label">Description:</label>
-          <div class="col-10">
-            <%= form.text_area :description, class:"form-control", id:"list_description" %>
-          </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-3">
+      <div class="row">
+        <label for="visibility" class="col-6 col-form-label text-end">Public:</label>
+        <div class="col-6 my-auto">
+          <%= form.check_box :visibility, class:"form-check-input", id:"list_visibility" %>
         </div>
-        <div class="row px-5 py-5">
-          <div class="col-11"></div>
-          <div class="col-1">
-            <%= form.submit "Save", class:"btn btn-outline-success" %>
-          </div>
-        </div>
-      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row px-5">
+    <label for="description" class="col-2 col-form-label">Description:</label>
+    <div class="col-10">
+      <%= form.text_area :description, class:"form-control", id:"list_description" %>
+    </div>
+  </div>
+  <div class="row px-5 py-5">
+    <div class="col-11"></div>
+    <div class="col-1">
+      <%= form.submit "Save", class:"btn btn-outline-success" %>
+    </div>
+  </div>
+<% end %>
 <script>
-    let ready_list = function() {
-      console.log("loaded")
-      const list = document.querySelector('#list');
-      list.addEventListener('ajax:error', () => {
-          let element = document.querySelector('#list_title');
-          element.classList.add('is-invalid');
-          element = document.querySelector('#list_title_feedback');
-          element.innerHTML = 'Can\'t be blank';
-      })
-    };
-    window.addEventListener('load', ready_list);
-    window.addEventListener('turbolinks:load', ready_list);
+  let ready_list = function() {
+    console.log("loaded")
+    const list = document.querySelector('#list');
+    list.addEventListener('ajax:error', () => {
+        let element = document.querySelector('#list_title');
+        element.classList.add('is-invalid');
+        element = document.querySelector('#list_title_feedback');
+        element.innerHTML = 'Can\'t be blank';
+    })
+  };
+  window.addEventListener('load', ready_list);
+  window.addEventListener('turbolinks:load', ready_list);
 </script>
