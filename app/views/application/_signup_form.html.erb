@@ -2,32 +2,36 @@
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_username" class="col-4 col-form-label">Username</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.text_field :username, class:"form-control", id:"signup_username" %>
+      <div class="invalid-tooltip" id="signup_username_feedback"></div>
     </div>
     <div class="col-1"></div>
   </div>
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_email" class="col-4 col-form-label">Email</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.email_field :email, class:"form-control", id:"signup_email" %>
+      <div class="invalid-tooltip" id="signup_email_feedback"></div>
     </div>
     <div class="col-1"></div>
   </div>
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_password" class="col-4 col-form-label">Password</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.password_field :password, class:"form-control", id:"signup_password" %>
+      <div class="invalid-tooltip" id="signup_password_feedback"></div>
     </div>
     <div class="col-1"></div>
   </div>
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="signup_password_confirmation" class="col-4 col-form-label">Confirm password</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.password_field :password_confirmation, class:"form-control", id:"signup_password_confirmation" %>
+      <div class="invalid-tooltip" id="signup_password_confirmation_feedback"></div>
     </div>
     <div class="col-1"></div>
   </div>
@@ -36,11 +40,20 @@
     window.addEventListener('load', () => {
       const signup = document.querySelector('#signup');
       signup.addEventListener('ajax:error', () => {
+        const fields = ['username', 'email', 'password', 'password_confirmation']
+        fields.forEach(field => {
+          let element = document.querySelector('#signup_' + field);
+          element.classList.remove('is-invalid')
+          element = document.querySelector('#signup_' + field + '_feedback');
+          element.innerHTML = '';
+        })
+
         const data = event.detail[0];
         Object.entries(data).forEach(error => {
-          console.log(error);
           let element = document.querySelector('#signup_' + error[0]);
-          element.classList.add('was-validated');
+          element.classList.add('is-invalid');
+          element = document.querySelector('#signup_' + error[0] + '_feedback');
+          element.innerHTML = error[1][0].charAt(0).toUpperCase() + error[1][0].slice(1);
         })
       })
     })

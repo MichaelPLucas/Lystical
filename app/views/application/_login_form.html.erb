@@ -2,18 +2,33 @@
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="login_email" class="col-4 col-form-label">Email</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.email_field :email, class:"form-control", id:"login_email" %>
+      <div class="invalid-tooltip" id="login_feedback"></div>
     </div>
     <div class="col-1"></div>
   </div>
   <div class="row py-3">
     <div class="col-1"></div>
     <label for="loginPassword" class="col-4 col-form-label">Password</label>
-    <div class="col-6">
+    <div class="col-6 position-relative">
       <%= form.password_field :password, class:"form-control", id:"login_password" %>
     </div>
     <div class="col-1"></div>
   </div>
   <%= form.submit "Log In", class:"btn btn-outline-success my-3" %>
+  <script>
+    window.addEventListener('load', () => {
+      const signup = document.querySelector('#login');
+      signup.addEventListener('ajax:error', () => {
+        const fields = ['email', 'password']
+        fields.forEach(field => {
+          let element = document.querySelector('#login_' + field);
+          element.classList.add('is-invalid')
+        });
+      });
+      let element = document.querySelector('#login_feedback');
+      element.innerHTML = "Invalid username or password";
+    })
+  </script>
 <% end %>
