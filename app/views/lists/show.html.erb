@@ -23,7 +23,7 @@
         <%= render "items/form", locals: { list_id: @list.id, method: "post", title: "New Item:" } %>
       <% end %>
       <% @items.each do |item| %>
-        <%= render "items/row", locals: { item: item } %>
+        <%= render "items/row", locals: { item: item, display_buttons: (@user and @user["id"] == @list.user_id) } %>
       <% end %>
       <div class="row py-4">
         <h3>Comments:</h3>
