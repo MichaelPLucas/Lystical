@@ -48,9 +48,8 @@
       <div class="col-6">
         <div class="row">
           <label for="item_link" class="col-2 col-form-label">Link:</label>
-          <div class="col-10 position-relative">
+          <div class="col-10">
             <%= form.text_field :link, class:"form-control", id:"item_link" %>
-            <div class="invalid-tooltip" id="item_link_feedback"></div>
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@
   let ready_items = function() {
     const items = document.querySelector('#items');
     items.addEventListener('ajax:error', () => {
-      const fields = ['title', 'link']
+      const fields = ['title']
       fields.forEach(field => {
         let element = document.querySelector('#item_' + field);
         element.classList.remove('is-invalid')

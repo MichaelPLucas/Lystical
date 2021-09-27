@@ -3,5 +3,4 @@ class Item < ApplicationRecord
   validates :list_id, presence: true
   validates :title, presence: true
   validates :currency, numericality: { :in => 0..999 }
-  validates :link, presence: true
 end

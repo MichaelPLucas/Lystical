@@ -8,7 +8,13 @@
       </div>
       <div class="col-6 px-4">
         <div class="row">
-          <h3><%= locals[:item].title %></h3>
+          <% if locals[:item].link and locals[:item].link != "" %>
+            <%= link_to locals[:item].link, class:"btn text-start" do %>
+              <h3><%= locals[:item].title %></h3>
+            <% end %>
+          <% else %>
+            <h3><%= locals[:item].title %></h3>
+          <% end %>
         </div>
         <div class="row px-3">
           <%= locals[:item].description %>
