@@ -16,7 +16,9 @@
       </div>
       <div class="col-4 my-auto">
         <div class="row text-end">
-          <h5><%= format("%.2f", locals[:item].price) %> <%= locals[:item].currency %></h5>
+          <% if locals[:item].price %>
+            <h5><%= format("%.2f", locals[:item].price) %> <%= Money::Currency.find_by_iso_numeric(locals[:item].currency).iso_code %></h5>
+          <% end %>
         </div>
       </div>
     </div>

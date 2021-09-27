@@ -28,6 +28,9 @@ gem 'bootstrap', '~> 5.1.0'
 # Use font-awesome for icons
 gem 'font-awesome-rails'
 
+# Use money gem for currencies
+gem 'money'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

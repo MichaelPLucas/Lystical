@@ -1,5 +1,5 @@
 <div class="row py-4 border-bottom">
-  <%= form_with model: @item, url:@item ? "/items/" + @item.id.to_s : "/items", scope: :item, method: locals[:method] do |form| %>
+  <%= form_with model: @item, url:@item ? "/items/" + @item.id.to_s : "/items", scope: :item, method: locals[:method], id: "items", local: false do |form| %>
     <%= form.hidden_field :list_id, value:locals[:list_id] %>
     <div class="row">
       <div class="col-11">
@@ -15,8 +15,9 @@
       <div class="col-4">
         <div class="row">
           <label for="item_title" class="col-2 col-form-label">Title:</label>
-          <div class="col-10">
+          <div class="col-10 position-relative">
             <%= form.text_field :title, class:"form-control", id:"item_title" %>
+            <div class="invalid-tooltip" id="item_title_feedback"></div>
           </div>
         </div>
       </div>
@@ -30,9 +31,9 @@
       </div>
       <div class="col-4">
         <div class="row">
-          <label for="item_currency" class="col-2 col-form-label">Currency:</label>
-          <div class="col-10">
-            <%= form.text_field :currency, class:"form-control", id:"item_currency" %>
+          <label for="item_currency" class="col-4 col-form-label">Currency:</label>
+          <div class="col-8">
+            <%= form.select :currency, Money::Currency.table.map{ |x| [x[1][:iso_code], x[1][:iso_numeric]] }, { selected: "840" }, { class:"form-select", id:"item_currency" } %>
           </div>
         </div>
       </div>
@@ -47,8 +48,9 @@
       <div class="col-6">
         <div class="row">
           <label for="item_link" class="col-2 col-form-label">Link:</label>
-          <div class="col-10">
+          <div class="col-10 position-relative">
             <%= form.text_field :link, class:"form-control", id:"item_link" %>
+            <div class="invalid-tooltip" id="item_link_feedback"></div>
           </div>
         </div>
       </div>
@@ -63,3 +65,25 @@
     </div>
   <% end %>
 </div>
+<script>
+    window.addEventListener('load', () => {
+      const signup = document.querySelector('#items');
+      signup.addEventListener('ajax:error', () => {
+        const fields = ['title', 'link']
+        fields.forEach(field => {
+          let element = document.querySelector('#item_' + field);
+          element.classList.remove('is-invalid')
+          element = document.querySelector('#item_' + field + '_feedback');
+          element.innerHTML = '';
+        })
+
+        const data = event.detail[0];
+        Object.entries(data).forEach(error => {
+          let element = document.querySelector('#item_' + error[0]);
+          element.classList.add('is-invalid');
+          element = document.querySelector('#item_' + error[0] + '_feedback');
+          element.innerHTML = error[1][0].charAt(0).toUpperCase() + error[1][0].slice(1);
+        })
+      })
+    })
+  </script>
