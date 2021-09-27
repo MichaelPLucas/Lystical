@@ -60,7 +60,6 @@ class ListsController < ApplicationController
         format.html { redirect_to "/lists/" + @list.id.to_s, notice: "List was successfully updated." }
         format.json { render :show, status: :ok, location: @list }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end

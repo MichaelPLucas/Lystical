@@ -18,7 +18,7 @@
   </div>
   <%= form.submit "Log In", class:"btn btn-outline-success my-3" %>
   <script>
-    window.addEventListener('turbolink:load', () => {
+    let ready_login = function() {
       const login = document.querySelector('#login');
       login.addEventListener('ajax:error', () => {
         const fields = ['email', 'password']
@@ -29,6 +29,8 @@
       });
       let element = document.querySelector('#login_feedback');
       element.innerHTML = "Invalid username or password";
-    })
+    };
+    window.addEventListener('load', ready_login);
+    window.addEventListener('turbolinks:load', ready_login);
   </script>
 <% end %>

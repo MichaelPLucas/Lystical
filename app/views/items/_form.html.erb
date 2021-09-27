@@ -66,9 +66,9 @@
   <% end %>
 </div>
 <script>
-    window.addEventListener('turbolink:load', () => {
-      const signup = document.querySelector('#items');
-      signup.addEventListener('ajax:error', () => {
+    let ready_items = function() {
+      const items = document.querySelector('#items');
+      items.addEventListener('ajax:error', () => {
         const fields = ['title', 'link']
         fields.forEach(field => {
           let element = document.querySelector('#item_' + field);
@@ -85,5 +85,7 @@
           element.innerHTML = error[1][0].charAt(0).toUpperCase() + error[1][0].slice(1);
         })
       })
-    })
+    };
+    window.addEventListener('load', ready_items);
+    window.addEventListener('turbolinks:load', ready_items);
   </script>
