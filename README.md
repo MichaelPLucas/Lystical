@@ -1,24 +1,24 @@
-# README
+# Lystical
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lystical is a webapp based on rails that allows users to create and manage lists, with an emphasis on shopping lists.
 
-Things you may want to cover:
+### Why?
 
-* Ruby version
+A problem I've found myself encountering frequently in the modern age of online shopping is a difficulty in keeping track of things that I want across multiple different sites. Say for instance that you have a few outfits you want to put together, but you keep finding articles of clothing that you can only get on amazon, or etsy, or ebay, or one of the many proprietary sites for different clothing companies. Trying to keep track of all of them at once can be a hassle. And so I present Lystical.
 
-* System dependencies
+### Features
 
-* Configuration
+* Create a user account to save your lists
 
-* Database creation
+* Create lists, both public and private to track items
 
-* Database initialization
+* Add items to your lists with price, preview image, and a link to where you found it
 
-* How to run the test suite
+* Search for and comment on other users' lists as well as recieve feedback on your own
 
-* Services (job queues, cache servers, search engines, etc.)
+### App details
 
-* Deployment instructions
+* Ruby version 3.0.2
+* Rails version 6.1.4.1
 
-* ...
+Run with `rails server -b 0.0.0.0`
