@@ -10,8 +10,10 @@
             <h1><%= @list.title %></h1>
           </div>
           <div class="col-1 text-end">
-            <%= link_to "/lists/" + @list.id.to_s + "/edit", class:"btn btn-outline-dark" do %>
-              <%= fa_icon "pencil" %>
+            <% if @user and @user["id"] == @list.user_id %>
+              <%= link_to "/lists/" + @list.id.to_s + "/edit", class:"btn btn-outline-dark" do %>
+                <%= fa_icon "pencil" %>
+              <% end %>
             <% end %>
           </div>
         </div>
